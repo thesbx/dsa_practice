@@ -1,3 +1,5 @@
+#! /usr/bin/env bun
+
 function createArray(length) {
     const array = new Array(length)
 
