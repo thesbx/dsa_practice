@@ -1,0 +1,44 @@
+#! /usr/bin/env bash
+#
+#
+BLUE="34"
+YELLOW="33"
+BOLDBLUE="\e[1;${BLUE}m"
+BOLDYELLOW="\e[1;${YELLOW}m"
+ENDCOLOR="\e[0m"
+BINARY_SEARCH_JS=js/binary_search.js
+BINARY_SEARCH_PY=python/binary_search.py
+value=$1
+
+exec_binary_search_js() {
+    if [[ -f "$BINARY_SEARCH_JS" ]]; then
+        echo -e "${BOLDBLUE}JavaScript Binary Search${ENDCOLOR}"
+        echo -e "${BOLDBLUE}====================${ENDCOLOR}"
+        bun $BINARY_SEARCH_JS $value
+    else
+        echo "$BINARY_SEARCH_JS does not exist."
+    fi
+
+}
+
+exec_binary_search_py() {
+    if [[ -f "$BINARY_SEARCH_PY" ]]; then
+        echo -e "${BOLDYELLOW}Python Binary Search${ENDCOLOR}"
+        echo -e "${BOLDYELLOW}====================${ENDCOLOR}"
+        python3 $BINARY_SEARCH_PY $value
+    else
+        echo "$BINARY_SEARCH_PY does not exist."
+    fi
+}
+
+if [[ $value ]]; then
+    exec_binary_search_js
+    echo ":::::::::::::::::::::::"
+    exec_binary_search_py
+else
+    echo "No argument found"
+fi
+
+
+
+
