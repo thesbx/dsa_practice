@@ -41,8 +41,15 @@ def linear_search(data, item):
             return f"Linear Search Exec: {(et - st) * 1000}ms"
         else:
             i += 1
+if len(args) > 2:
+    print(f"Array Size: {int(args[1])}")
+    print(binary_search(db, int(args[2])))
+    print("--------------------")
+    print(linear_search(db, int(args[2])))
+else:
+    print(f"Array Size: {int(args[1])}")
+    print(binary_search(db, int(args[1])))
+    print("--------------------")
+    print(linear_search(db, int(args[1])))
 
-print(binary_search(db, int(args[1])))
-print("--------------------")
-print(linear_search(db, int(args[1])))
 

@@ -45,11 +45,14 @@ function linear_search(data, item) {
 }
 
 const args = process.argv
-
-if (args[2]) {
+if (args.length == 3) {
+    console.log(`Array Size: ${args[2]}`)
     binary_search(createArray(args[2]), args[2])
     console.warn("---------------------")
     linear_search(createArray(args[2]), args[2])
 } else {
-    console.log("No argument provided, please enter a number")
+    console.log(`Array Size: ${args[2]}`)
+    binary_search(createArray(args[2]), args[3])
+    console.warn("---------------------")
+    linear_search(createArray(args[2]), args[3])
 }
