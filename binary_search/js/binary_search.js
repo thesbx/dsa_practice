@@ -42,9 +42,12 @@ function linear_search(data, item) {
     }
 }
 
-const delta = 1000000
 const args = process.argv
 
-binary_search(createArray(args[2]), args[2])
-console.warn("---------------------")
-linear_search(createArray(args[2]), args[2])
+if (args[2]) {
+    binary_search(createArray(args[2]), args[2])
+    console.warn("---------------------")
+    linear_search(createArray(args[2]), args[2])
+} else {
+    console.log("No argument provided, please enter a number")
+}
