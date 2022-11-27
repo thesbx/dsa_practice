@@ -17,7 +17,7 @@ fn main() {
         },
         3 => {
             let size = args[1].parse::<usize>().unwrap();
-            let target = args[2].parse::<usize>().unwrap();
+            let target = args[2].parse::<usize>().unwrap() - 1;
             let array = create_array(size);
             println!("Array size: {}", &array.len());
             binary_search(&array, &target);
@@ -29,7 +29,7 @@ fn main() {
 }
 
 fn create_array(length: usize) -> Vec<usize> {
-    let mut arr = vec![1; length];
+    let mut arr = vec![0; length];
     for i in 0..length {
         arr[i] = i;
     }
@@ -49,7 +49,7 @@ fn binary_search(data: &Vec<usize>, target: &usize) -> Option<usize> {
 
         if val == target {
             let end = start.elapsed();
-            println!("Result: {}", mid_index - 1);
+            println!("Result: {}", mid_index);
             println!("Binary Search Exec: {:?}", end);
             break;
         }
@@ -72,7 +72,7 @@ fn linear_search(data: &Vec<usize>, target: &usize) -> Option<usize> {
     for (index, val) in data.iter().enumerate() {
         if val == target {
             let end = start.elapsed();
-            println!("Result: {}", index - 1);
+            println!("Result: {}", index);
             println!("Linear Search Exec: {:?}", end);
             break;
         }
