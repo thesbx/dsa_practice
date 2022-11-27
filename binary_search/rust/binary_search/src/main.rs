@@ -49,7 +49,7 @@ fn binary_search(data: &Vec<usize>, target: &usize) -> Option<usize> {
 
         if val == target {
             let end = start.elapsed();
-            println!("Result: {}", mid_index);
+            println!("Result: {}", mid_index - 1);
             println!("Binary Search Exec: {:?}", end);
             break;
         }
@@ -72,7 +72,7 @@ fn linear_search(data: &Vec<usize>, target: &usize) -> Option<usize> {
     for (index, val) in data.iter().enumerate() {
         if val == target {
             let end = start.elapsed();
-            println!("Result: {}", index);
+            println!("Result: {}", index - 1);
             println!("Linear Search Exec: {:?}", end);
             break;
         }
