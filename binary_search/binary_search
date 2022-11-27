@@ -3,11 +3,14 @@
 #
 BLUE="34"
 YELLOW="33"
+MAGENTA="35"
 BOLDBLUE="\e[1;${BLUE}m"
 BOLDYELLOW="\e[1;${YELLOW}m"
+BOLDMAGENTA="\e[1;${MAGENTA}m"
 ENDCOLOR="\e[0m"
 BINARY_SEARCH_JS=js/binary_search.js
 BINARY_SEARCH_PY=python/binary_search.py
+BINARY_SEARCH_RUST=rust/binary_search/target/release/binary_search
 ARRAY_LENGTH=$1
 ITEM_TO_FIND=$2
 
@@ -42,10 +45,27 @@ exec_binary_search_py() {
     fi
 }
 
+exec_binary_search_rust() {
+    if [[ -f "$BINARY_SEARCH_RUST" ]]; then
+        echo -e "${BOLDMAGENTA}Rust Binary Search${ENDCOLOR}"
+        echo -e "${BOLDMAGENTA}==================${ENDCOLOR}"
+
+        if [[ $ITEM_TO_FIND ]]; then
+            $BINARY_SEARCH_RUST $ARRAY_LENGTH $ITEM_TO_FIND 
+        else
+            $BINARY_SEARCH_RUST $ARRAY_LENGTH
+        fi 
+    else 
+        echo "$BINARY_SEARCH_RUST does not exist."
+    fi
+}
+
 if [[ $ARRAY_LENGTH ]]; then
     exec_binary_search_js
     echo ":::::::::::::::::::::::"
     exec_binary_search_py
+    echo ":::::::::::::::::::::::"
+    exec_binary_search_rust
 else
     echo "No argument found"
 fi
