@@ -4,6 +4,7 @@ fn swap(vec: &mut [i32], i: usize, j: usize) {
     vec[i] = vec[j];
     vec[j] = temp;
 }
+
 fn partition(vec: &mut [i32], start: usize, end: usize) -> i32 {
     let pivot = vec[end];
     let mut index = start;
