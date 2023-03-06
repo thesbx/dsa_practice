@@ -1,39 +1,39 @@
 use std::time::Instant;
-fn swap(vec: &mut [i32], i: usize, j: usize) {
+fn swap(vec: &mut [u8], i: usize, j: usize) {
     let temp = vec[i];
     vec[i] = vec[j];
     vec[j] = temp;
 }
 
-fn partition(vec: &mut [i32], start: usize, end: usize) -> i32 {
-    let pivot = vec[end];
-    let mut index = start;
-    let mut i = start;
+fn partition(vec: &mut [u8], lo: usize, hi: usize) -> u8 {
+    let pivot = vec[hi];
+    let mut index = lo;
+    let mut i = lo;
 
-    while i < end {
+    while i < hi {
         if vec[i] < pivot {
             swap(vec, i, index);
             index += 1;
         }
         i += 1;
     }
-    swap(vec, index, end);
-    return index as i32;
+    swap(vec, index, hi);
+    return index as u8;
 }
 
-fn quicksort(vec: &mut [i32], start: usize, end: usize) {
-    if start >= end {
+fn quicksort(vec: &mut [u8], lo: usize, hi: usize) {
+    if lo >= hi {
         return;
     }
-    let pivot = partition(vec, start, end);
-    quicksort(vec, start, (pivot - 1) as usize);
-    quicksort(vec, (pivot + 1) as usize, end);
+    let pivot = partition(vec, lo, hi);
+    quicksort(vec, lo, (pivot - 1) as usize);
+    quicksort(vec, (pivot + 1) as usize, hi);
 }
 
-fn random_vec(length: u32) -> Vec<i32> {
+fn random_vec(length: usize) -> Vec<u8> {
     let mut slice = Vec::new(); 
     for _ in 0..length {
-        slice.push(rand::random::<i32>());
+        slice.push(rand::random::<u8>());
     }
     slice
 }
@@ -44,5 +44,5 @@ fn main() {
     let st = Instant::now();
     quicksort(&mut vec, 0, last_index);
     println!("{:?}", st.elapsed());
-    println!("{:?}", vec.len());
+    println!("{:?}", vec);
 }
