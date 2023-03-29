@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 timed = "0.1.2"
+sbx_common = { git = "https://github.com/thesandybridge/sbx_common" }

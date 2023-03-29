@@ -1,5 +1,6 @@
 use std::time::Instant;
 use std::env;
+use sbx_common::generate_vec;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -9,7 +10,7 @@ fn main() {
         2 => {
             let size = args[1].parse::<usize>().unwrap();
             let target = size - 1;
-            let array = create_array(size);
+            let array = generate_vec(size);
             println!("Array size: {}", &array.len());
             binary_search(&array, &target);
             println!("---------------------");
@@ -18,7 +19,7 @@ fn main() {
         3 => {
             let size = args[1].parse::<usize>().unwrap();
             let target = args[2].parse::<usize>().unwrap() - 1;
-            let array = create_array(size);
+            let array = generate_vec(size);
             println!("Array size: {}", &array.len());
             binary_search(&array, &target);
             println!("---------------------");
@@ -28,21 +29,13 @@ fn main() {
     }
 }
 
-fn create_array(length: usize) -> Vec<usize> {
-    let mut arr = vec![0; length];
-    for i in 0..length {
-        arr[i] = i;
-    }
-    arr
-}
-
 fn binary_search(data: &Vec<usize>, target: &usize) -> Option<usize> {
     let start = Instant::now();
     let mut low: usize = 0;
     let mut high: usize = data.len() as usize - 1;
-    
+
     while low <= high {
-        
+
         let mid = ((high - low) / 2) + low;
         let mid_index = mid as usize;
         let val = &data[mid_index];

@@ -6,6 +6,7 @@ version = 3
 name = "binary_search"
 version = "0.1.0"
 dependencies = [
+ "sbx_common",
  "timed",
 ]
 
@@ -79,6 +80,11 @@ checksum = "bbe448f377a7d6961e30f5955f9b8d106c3f5e449d493ee1b125c1d43c2b5179"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "sbx_common"
+version = "0.1.0"
+source = "git+https://github.com/thesandybridge/sbx_common#bd2ffc9f3600819b5e152f4e58a24af45d9eb228"
 
 [[package]]
 name = "strsim"
