@@ -7,7 +7,7 @@ fn swap(vec: &mut [isize], i: usize, j: usize) {
     vec[j] = temp;
 }
 
-fn partition(vec: &mut [isize], lo: usize, hi: usize) -> i32 {
+fn partition(vec: &mut [isize], lo: usize, hi: usize) -> isize {
     let pivot = vec[hi];
     let mut index = lo;
     let mut i = lo;
@@ -20,7 +20,7 @@ fn partition(vec: &mut [isize], lo: usize, hi: usize) -> i32 {
         i += 1;
     }
     swap(vec, index, hi);
-    return index as i32;
+    return index as isize;
 }
 
 fn quicksort(vec: &mut [isize], lo: usize, hi: usize) {
